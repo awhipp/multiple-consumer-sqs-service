@@ -1,0 +1,17 @@
+version: "3"
+services:
+  localstack:
+    image: localstack/localstack:3.3
+    container_name: localstack
+    environment:
+      - SERVICES=sqs,sns
+      - DEBUG=1
+    ports:
+      - "4566:4566"
+      - "4571:4571"
+    networks:
+      - mcsqs_network
+
+networks:
+  mcsqs_network:
+    driver: bridge
